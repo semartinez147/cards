@@ -2,7 +2,6 @@ package edu.cnm.deepdive.model;
 
 import java.security.SecureRandom;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
@@ -38,6 +37,13 @@ public class Deck {
     Collections.shuffle(cards, rng);
   }
 
+  public int remaining () {
+    return cards.size();
+  }
+
+  public int dealt () {
+    return dealt.size();
+  }
   @Override
   public String toString() {
     return cards.toString();
