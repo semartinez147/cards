@@ -8,7 +8,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Random;
 
-public class Deck  implements Comparator<Card>{
+public class Deck {
 
   private List<Card> cards;
   private List<Card> dealt;
@@ -74,12 +74,8 @@ public class Deck  implements Comparator<Card>{
     if (gather) {
       gather();
     }
-    cards.sort(this);
+    cards.sort(null);
   }
 
-  @Override
-  public int compare(Card card1, Card card2) {
-    return Comparator.comparing(Card::getSuit).thenComparing(Card::getRank).compare(card1, card2);
-  }
 }
 
