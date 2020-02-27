@@ -3,11 +3,12 @@ package edu.cnm.deepdive.model;
 import java.security.SecureRandom;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Random;
 
-public class Deck {
+public class Deck  implements Comparator<Card>{
 
   private List<Card> cards;
   private List<Card> dealt;
@@ -73,14 +74,12 @@ public class Deck {
     if (gather) {
       gather();
     }
-    cards.sort((card1, card2) -> {
-     int result = card1.getSuit().compareTo(card2.getSuit());
-     if (result == 0) {
-       result = card1.getRank().compareTo(card2.getRank());
-     }
-     return result;
-    });
+    cards.sort(this);
   }
 
+  @Override
+  public int compare(Card card1, Card card2) {
+    return Comparator.comparing(Card::getSuit).thenComparing(Card::getRank).compare(card1, card2);
+  }
 }
 
