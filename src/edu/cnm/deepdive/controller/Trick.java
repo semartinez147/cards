@@ -15,6 +15,11 @@ public class Trick {
   private List<Card> blackPile;
   private Random rng = new SecureRandom();
 
+  /**
+   * Manages trick by calling each method in the appropriate order.
+   *
+   * @param args not used.
+   */
   public static void main(String[] args) {
     Trick trick = new Trick();
     trick.prepare();
@@ -23,11 +28,18 @@ public class Trick {
     trick.report();
   }
 
+  /**
+   * Creates a new {@link Deck} and shuffles the cards according to {@link Deck} instructions.
+   */
   private void prepare() {
     deck = new Deck();
     deck.shuffle(rng);
   }
 
+  /**
+   * Defines the main action of the trick.  A card is discarded and its {@link Color} determines the
+   * placement of the next card into one of two piles.
+   */
   private void split() {
     redPile = new LinkedList<>();
     blackPile = new LinkedList<>();
@@ -40,6 +52,10 @@ public class Trick {
     }
   }
 
+  /**
+   * Defines the "twist."  A random, equal number of cards is passed from the top of each pile into
+   * the other.
+   */
   private void swap() {
     int swapSize = rng.nextInt(1 + Math.min(redPile.size(), blackPile.size()));
     for (int i = 0; i < swapSize; i++) {
@@ -49,6 +65,10 @@ public class Trick {
 
   }
 
+  /**
+   * Final step.  The contents of each pile is displayed, demonstrating that the count of each
+   * {@link Color} in the opposite pile is equivalent.
+   */
   private void report() {
     int redCount = 0;
     int blackCount = 0;

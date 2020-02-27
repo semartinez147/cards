@@ -30,6 +30,6 @@ public enum Suit {
    * Encapsulates the two possible colors (red &amp; black)
    */
   public enum Color {
-    RED, BLACK;
+    RED, BLACK
   }
 }
