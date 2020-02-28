@@ -70,6 +70,12 @@ public class Deck {
     return cards.toString();
   }
 
+  /**
+   * Returns the {@link Deck} of {@link Card}s in sorted order.  {@link Card} overrides {@link
+   * Comparable#compareTo(Object)} to specify comparison by {@link Rank}, then {@link Suit}.
+   *
+   * @param gather determines whether dealt cards are added back to the deck before sorting.
+   */
   public void sort(boolean gather) {
     if (gather) {
       gather();
